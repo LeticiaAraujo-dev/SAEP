@@ -1,0 +1,17 @@
+﻿@model SAEP_Treino_Final.Models.Equipamentos
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Excluir equipamento</h1>
+
+<h3 class="erro">Atençao! Tem certeza que deseja excluir o equipamento? Essa ação não poderá ser desfeita.</h3>
+<div>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Deletar" class="btn btn-danger" /> 
+        <a asp-action="Index">Voltar aos equipamentos</a>
+    </form>
+</div>

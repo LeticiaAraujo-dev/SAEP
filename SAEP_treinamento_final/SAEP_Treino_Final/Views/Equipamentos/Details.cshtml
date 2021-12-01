@@ -1,0 +1,42 @@
+﻿@model SAEP_Treino_Final.Models.Equipamentos
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Comentários</h1>
+
+<div>
+    
+    <form action="@Url.Action("Comentar")" method="post">
+
+        <input class="form-control" type="text" name="Comentario" />
+
+        <input value="@ViewBag.Perfil" class="form-control" type="hidden" name="IdPerfil" />
+        <input value="@Html.DisplayFor(model => model.Id)" class="form-control" type="hidden" name="IdEquipamento" />
+
+        <button type="submit" class="btn btn-dark">Comentar</button>
+
+    </form>
+
+    <div>
+        <a asp-action="Index">Voltar aos equipamentos</a>
+    </div>
+
+    <div>
+        @if(ViewBag.Comentarios != null)
+        {
+            @foreach (var item in ViewBag.Comentarios)
+            {
+                <div class="comentarios">
+                <b>@item.Perfis.Perfil - @item.Data</b>
+                <p>@item.Comentario</p>
+                </div>
+
+            }
+        }
+
+    </div>
+
+</div>
+

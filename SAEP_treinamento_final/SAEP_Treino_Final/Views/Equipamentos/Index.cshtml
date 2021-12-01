@@ -1,0 +1,96 @@
+﻿@model IEnumerable<SAEP_Treino_Final.Models.Equipamentos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Equipamentos</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                
+            </th>
+            <th>
+                
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+
+@foreach (var item in Model) {
+            <tr class="equip-content">
+                @if (@ViewBag.Perfil == "2")
+                {
+                    <td>
+                    <img src="~/img/Imagens_Equipamentos/@Html.DisplayFor(modelItem => item.Imagem)" />
+                </td>
+
+                <td>
+                @Html.DisplayFor(modelItem => item.Equipamento)
+                </td>
+            
+                <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                
+                </td>
+                <td>
+                
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <img src="~/img/Imagens_Icones/comentario.png"/>
+                    </a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id">
+                        <img src="~/img/Imagens_Icones/deletar.png"/>
+                    </a>
+                </td>
+                }
+            @if (item.Ativo == true && @ViewBag.Perfil != "2")
+                {
+                    
+                <td>
+                    <img src="~/img/Imagens_Equipamentos/@Html.DisplayFor(modelItem => item.Imagem)" />
+                </td>
+
+                <td>
+                @Html.DisplayFor(modelItem => item.Equipamento)
+                </td>
+            
+                <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                
+                </td>
+                <td>
+                
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <img src="~/img/Imagens_Icones/comentario.png"/>
+                    </a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id">
+                        <img src="~/img/Imagens_Icones/deletar.png"/>
+                    </a>
+                </td>
+                }
+           </tr>
+}
+    </tbody>
+</table>
